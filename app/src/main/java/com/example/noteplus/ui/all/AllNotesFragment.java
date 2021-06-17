@@ -1,4 +1,4 @@
-package com.example.noteplus.ui;
+package com.example.noteplus.ui.all;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,11 +10,11 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.noteplus.R;
-import com.example.noteplus.databinding.FragmentSecondBinding;
+import com.example.noteplus.databinding.FragmentAllNotesBinding;
 
-public class SecondFragment extends Fragment {
+public class AllNotesFragment extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private FragmentAllNotesBinding binding;
 
     @Override
     public View onCreateView(
@@ -22,21 +22,13 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = FragmentAllNotesBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
-        });
     }
 
     @Override
