@@ -2,8 +2,8 @@
     <string name="app_name">NotePlus</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="all_notes_fragment_label">All</string>
+    <string name="folders_fragment_label">Folders</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 

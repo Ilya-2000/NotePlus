@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.noteplus.ui.all.AllNotesFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/all_notes_fragment_label"
         tools:layout="@layout/fragment_all_notes">
 
         <action
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.noteplus.ui.folders.FoldersFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/folders_fragment_label"
         tools:layout="@layout/fragment_folders">
 
         <action
