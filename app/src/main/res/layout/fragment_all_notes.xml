@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.all.AllNotesFragment">
-    <FrameLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/all_notes_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"/>
+        android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
