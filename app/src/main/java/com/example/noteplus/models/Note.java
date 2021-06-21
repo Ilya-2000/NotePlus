@@ -1,8 +1,9 @@
 package com.example.noteplus.models;
 
 import androidx.room.Dao;
+import androidx.room.Entity;
 
-@Dao
+@Entity
 public class Note {
     private int id;
     private String header;
