@@ -2,9 +2,11 @@ package com.example.noteplus.models;
 
 import androidx.room.Dao;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity
 public class Note {
+    @PrimaryKey
     private int id;
     private String header;
     private String body;
