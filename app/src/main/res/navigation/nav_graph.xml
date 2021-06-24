@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/AllNotesFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/AllNotesFragment"
         android:name="com.example.noteplus.ui.all.AllNotesFragment"
         android:label="@string/all_notes_fragment_label"
         tools:layout="@layout/fragment_all_notes">
-
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_AllNotesFragment_to_noteFragment"
+            app:destination="@id/noteFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/FoldersFragment"
         android:name="com.example.noteplus.ui.folders.FoldersFragment"
         android:label="@string/folders_fragment_label"
         tools:layout="@layout/fragment_folders">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/noteFragment"
+        android:name="com.example.noteplus.ui.note.NoteFragment"
+        android:label="note_fragment"
+        tools:layout="@layout/note_fragment" />
 </navigation>

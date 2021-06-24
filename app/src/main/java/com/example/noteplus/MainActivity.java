@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import com.example.noteplus.adapters.MainViewPagerAdapter;
+import com.example.noteplus.interfaces.FabInterface;
 import com.example.noteplus.ui.all.AllNotesFragment;
 import com.example.noteplus.ui.folders.FoldersFragment;
 import com.google.android.material.snackbar.Snackbar;
@@ -27,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+    FabInterface fabInterface;
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
@@ -68,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                switch (viewPager2.getCurrentItem()) {
+                    case 0:
+                        fabInterface.noteCreate();
+                        break;
+                    case 1:
+                        fabInterface.folderCreate();
+                        break;
+                }
             }
         });
     }
@@ -93,6 +103,11 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void setListener(FabInterface iFab) {
+        fabInterface = iFab;
+    }
+
 
    /* @Override
     public boolean onSupportNavigateUp() {

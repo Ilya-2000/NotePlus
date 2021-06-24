@@ -5,19 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.note.NoteFragment"
-    android:background="@color/brutal_blue">
+    android:background="@color/white">
 
     <EditText
         android:id="@+id/title_note_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:importantForAutofill="no"
+        android:inputType="text"
         android:textColor="@color/text_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:inputType="text"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
@@ -26,8 +27,11 @@
         android:layout_marginTop="16dp"
         android:textColor="@color/text_color"
         android:ems="10"
+        android:minLines="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:background="@null"
+        android:inputType="textImeMultiLine|textNoSuggestions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
