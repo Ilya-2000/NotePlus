@@ -1,23 +1,16 @@
 package com.example.noteplus;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import com.example.noteplus.adapters.MainViewPagerAdapter;
 import com.example.noteplus.interfaces.FabInterface;
-import com.example.noteplus.ui.all.AllNotesFragment;
-import com.example.noteplus.ui.folders.FoldersFragment;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.LayoutInflater;
 import android.view.View;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.noteplus.databinding.ActivityMainBinding;
@@ -97,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_save) {
             return true;
         }
 

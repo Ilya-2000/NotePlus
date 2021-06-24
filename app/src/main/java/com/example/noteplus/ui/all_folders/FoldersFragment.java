@@ -1,4 +1,4 @@
-package com.example.noteplus.ui.folders;
+package com.example.noteplus.ui.all_folders;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,13 +7,17 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.noteplus.MainActivity;
 import com.example.noteplus.R;
 import com.example.noteplus.databinding.FragmentFoldersBinding;
+import com.example.noteplus.interfaces.FabInterface;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class FoldersFragment extends Fragment {
+public class FoldersFragment extends Fragment implements FabInterface {
 
     private FragmentFoldersBinding binding;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     public View onCreateView(
@@ -22,12 +26,14 @@ public class FoldersFragment extends Fragment {
     ) {
 
         binding = FragmentFoldersBinding.inflate(inflater, container, false);
+        floatingActionButton = requireActivity().findViewById(R.id.fab);
         return binding.getRoot();
 
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ((MainActivity) requireActivity()).setListener(this);
     }
 
     @Override
@@ -36,4 +42,13 @@ public class FoldersFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void noteCreate() {
+        //do nothing
+    }
+
+    @Override
+    public void folderCreate() {
+
+    }
 }

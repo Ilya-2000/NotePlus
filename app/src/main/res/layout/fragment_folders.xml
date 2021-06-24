@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.folders.FoldersFragment">
+    tools:context=".ui.all_folders.FoldersFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/folder_rv"

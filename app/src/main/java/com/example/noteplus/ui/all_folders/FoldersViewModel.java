@@ -1,4 +1,4 @@
-package com.example.noteplus.ui.folders;
+package com.example.noteplus.ui.all_folders;
 
 import androidx.lifecycle.ViewModel;
 

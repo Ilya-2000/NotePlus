@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/FoldersFragment"
-        android:name="com.example.noteplus.ui.folders.FoldersFragment"
+        android:name="com.example.noteplus.ui.all_folders.FoldersFragment"
         android:label="@string/folders_fragment_label"
         tools:layout="@layout/fragment_folders">
     </fragment>

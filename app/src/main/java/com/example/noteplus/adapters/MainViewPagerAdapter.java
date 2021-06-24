@@ -1,8 +1,5 @@
 package com.example.noteplus.adapters;
 
-import android.view.View;
-import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -10,9 +7,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.noteplus.ui.all.AllNotesFragment;
-import com.example.noteplus.ui.folders.FoldersFragment;
-
-import java.util.ArrayList;
+import com.example.noteplus.ui.all_folders.FoldersFragment;
 
 public class MainViewPagerAdapter extends FragmentStateAdapter {
 
