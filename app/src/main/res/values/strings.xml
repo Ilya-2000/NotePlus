@@ -12,4 +12,5 @@
     <string name="create_folder_title">Create folder</string>
     <string name="enter_name_hint">Enter folder name</string>
     <string name="cancel">Cancel</string>
+    <string name="some_text">Some text</string>
 </resources>
