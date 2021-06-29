@@ -1,4 +1,4 @@
-package com.example.noteplus.ui.all;
+package com.example.noteplus.ui.all_notes;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,10 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
-import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.noteplus.MainActivity;
@@ -21,8 +17,6 @@ import com.example.noteplus.interfaces.FabInterface;
 import com.example.noteplus.ui.note.NoteFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.Objects;
 
 public class AllNotesFragment extends Fragment implements FabInterface {
 
@@ -67,7 +61,7 @@ public class AllNotesFragment extends Fragment implements FabInterface {
     }
 
     @Override
-    public void folderCreate() {
+    public void todoCreate() {
         //do nothing
     }
 }

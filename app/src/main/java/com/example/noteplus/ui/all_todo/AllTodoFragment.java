@@ -1,4 +1,4 @@
-package com.example.noteplus.ui.all_folders;
+package com.example.noteplus.ui.all_todo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.noteplus.MainActivity;
 import com.example.noteplus.R;
-import com.example.noteplus.databinding.FragmentFoldersBinding;
+import com.example.noteplus.databinding.FragmentAllTodoBinding;
 import com.example.noteplus.interfaces.FabInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class FoldersFragment extends Fragment implements FabInterface {
+public class AllTodoFragment extends Fragment implements FabInterface {
 
-    private FragmentFoldersBinding binding;
+    private FragmentAllTodoBinding binding;
     private FloatingActionButton floatingActionButton;
 
     @Override
@@ -25,7 +25,7 @@ public class FoldersFragment extends Fragment implements FabInterface {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentFoldersBinding.inflate(inflater, container, false);
+        binding = FragmentAllTodoBinding.inflate(inflater, container, false);
         floatingActionButton = requireActivity().findViewById(R.id.fab);
         return binding.getRoot();
 
@@ -48,7 +48,7 @@ public class FoldersFragment extends Fragment implements FabInterface {
     }
 
     @Override
-    public void folderCreate() {
+    public void todoCreate() {
 
     }
 }

@@ -3,7 +3,7 @@
     <string name="action_save">Save</string>
     <!-- Strings used for fragments for navigation -->
     <string name="all_notes_fragment_label">All</string>
-    <string name="folders_fragment_label">Folders</string>
+    <string name="todo_fragment_label">Todo</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 

@@ -1,4 +1,4 @@
-package com.example.noteplus.ui.all;
+package com.example.noteplus.ui.all_notes;
 
 import androidx.lifecycle.ViewModel;
 

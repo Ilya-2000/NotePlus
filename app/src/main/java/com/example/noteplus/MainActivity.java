@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             if (position == 0) {
                 tab.setText(R.string.all_notes_fragment_label);
             } else {
-                tab.setText(R.string.folders_fragment_label);
+                tab.setText(R.string.todo_fragment_label);
             }
         })).attach();
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                         fabInterface.noteCreate();
                         break;
                     case 1:
-                        fabInterface.folderCreate();
+                        fabInterface.todoCreate();
                         break;
                 }
             }

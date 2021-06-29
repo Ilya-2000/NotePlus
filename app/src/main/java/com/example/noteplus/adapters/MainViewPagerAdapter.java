@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.noteplus.ui.all.AllNotesFragment;
-import com.example.noteplus.ui.all_folders.FoldersFragment;
+import com.example.noteplus.ui.all_notes.AllNotesFragment;
+import com.example.noteplus.ui.all_todo.AllTodoFragment;
 
 public class MainViewPagerAdapter extends FragmentStateAdapter {
 
@@ -19,7 +19,7 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         if (position == 1) {
-            return new FoldersFragment();
+            return new AllTodoFragment();
         }
         return new AllNotesFragment();
     }
