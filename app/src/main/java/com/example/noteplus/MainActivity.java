@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -28,12 +29,15 @@ public class MainActivity extends AppCompatActivity {
     private MainViewPagerAdapter mainViewPagerAdapter;
     private TabLayout tabLayout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbar);
+        /*getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);*/
         ViewPager2 viewPager2 = binding.mainVp;
         viewPager2.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         mainViewPagerAdapter = new MainViewPagerAdapter(getSupportFragmentManager(), getLifecycle());
@@ -49,14 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 tab.setText(R.string.todo_fragment_label);
             }
         })).attach();
-
-
-
-        setSupportActionBar(binding.toolbar);
-
-        /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);*/
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,10 +98,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-   /* @Override
+    @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }*/
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(getFragmentManager().getBackStackEntryCount() == 0) {
+            super.onBackPressed();
+        }
+        else {
+            getFragmentManager().popBackStack();
+        }
+    }
 }

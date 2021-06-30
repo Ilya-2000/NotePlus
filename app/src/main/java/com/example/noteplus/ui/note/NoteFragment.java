@@ -1,5 +1,6 @@
 package com.example.noteplus.ui.note;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.widget.EditText;
 
 import com.example.noteplus.R;
 import com.example.noteplus.databinding.NoteFragmentBinding;
+
+import org.jetbrains.annotations.NotNull;
 
 public class NoteFragment extends Fragment {
 
@@ -38,6 +41,12 @@ public class NoteFragment extends Fragment {
         bodyText = binding.bodyNoteText;
         noteCreateButton = binding.createNoteBtn;
         return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
