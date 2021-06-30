@@ -9,35 +9,36 @@
 
 
     <EditText
-        android:id="@+id/title_note_text"
+        android:id="@+id/title_todo_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
         android:importantForAutofill="no"
         android:inputType="text"
         android:textColor="@color/text_color"
-        android:textSize="16sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+    
+
+
+
+    <Button
+        android:id="@+id/create_todo_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:text="Создать"
         android:textColor="@color/text_color"
-        android:ems="10"
-        android:minLines="10"
-        android:gravity="start|top"
-        android:singleLine="false"
-        android:background="@null"
-        android:inputType="textImeMultiLine|textNoSuggestions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_note_text"
-        app:layout_constraintVertical_bias="0.0"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/body_note_text" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
