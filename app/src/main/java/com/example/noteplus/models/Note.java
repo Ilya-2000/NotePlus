@@ -6,10 +6,15 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Note {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String header;
     private String body;
+
+    public Note(String header, String body) {
+        this.header = header;
+        this.body = body;
+    }
 
     public int getId() {
         return id;
