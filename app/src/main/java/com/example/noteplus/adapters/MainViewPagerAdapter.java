@@ -18,10 +18,16 @@ public class MainViewPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        if (position == 1) {
-            return new AllTodoFragment();
+        switch (position) {
+            case 0:
+                AllNotesFragment allNotesFragment = new AllNotesFragment();
+                return allNotesFragment;
+            case 1:
+                AllTodoFragment allTodoFragment = new AllTodoFragment();
+                return allTodoFragment;
+            default:
+                return null;
         }
-        return new AllNotesFragment();
     }
 
     @Override

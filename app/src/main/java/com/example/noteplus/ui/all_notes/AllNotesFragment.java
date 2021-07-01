@@ -43,7 +43,7 @@ public class AllNotesFragment extends Fragment implements FabInterface {
 
     public AllNotesFragment() {
         mainFragment = ((MainFragment)AllNotesFragment.this.getParentFragment());
-        mainFragment.setListener(this);
+
     }
 
     @Override
@@ -85,6 +85,7 @@ public class AllNotesFragment extends Fragment implements FabInterface {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
 
 
     }
