@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.lifecycle.Observer;
@@ -24,7 +22,6 @@ import com.example.noteplus.databinding.FragmentAllNotesBinding;
 import com.example.noteplus.interfaces.FabInterface;
 import com.example.noteplus.models.Note;
 import com.example.noteplus.ui.note.NoteFragment;
-import com.example.noteplus.ui.note.NoteViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -72,13 +69,14 @@ public class AllNotesFragment extends Fragment implements FabInterface {
                     @Override
                     public void onItemClick(Note note) {
                         if (savedInstanceState == null) {
+                            allNotesViewModel.setNoteMutableLiveData(note);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("note", note);
                             Fragment fragInstance;
-
-                            //Calling the Fragment newInstance Static method
                             fragInstance = NoteFragment.newInstance();
-
+                            fragInstance.setArguments(bundle);
                             getFragmentManager().beginTransaction()
-                                    .add(R.id.container, fragInstance)
+                                    .add(R.id.fragment_container, fragInstance)
                                     .commit();
                         }
 
@@ -86,8 +84,6 @@ public class AllNotesFragment extends Fragment implements FabInterface {
                         ViewPager2 viewPager2 = requireActivity().findViewById(R.id.main_vp);
                         TabLayout tabLayout = requireActivity().findViewById(R.id.main_tab);
                         fragmentContainerView.setVisibility(View.VISIBLE);
-                        NoteFragment noteFragment = new NoteFragment();
-                        //getFragmentManager().beginTransaction().replace(R.id.fragment_container, noteFragment).commit();
                         fab.setVisibility(View.GONE);
                         viewPager2.setVisibility(View.GONE);
                         tabLayout.setVisibility(View.GONE);

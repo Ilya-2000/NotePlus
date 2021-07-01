@@ -29,6 +29,6 @@ public interface NoteDao {
     void deleteNote(Note note);
 
     @Update
-    void updateNote(Note note);
+    Completable updateNote(Note note);
 
 }
