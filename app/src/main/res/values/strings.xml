@@ -14,4 +14,6 @@
     <string name="cancel">Cancel</string>
     <string name="some_text">Some text</string>
     <string name="delete">Delete</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

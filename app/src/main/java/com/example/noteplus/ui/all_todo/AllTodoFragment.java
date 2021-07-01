@@ -12,6 +12,8 @@ import com.example.noteplus.MainActivity;
 import com.example.noteplus.R;
 import com.example.noteplus.databinding.FragmentAllTodoBinding;
 import com.example.noteplus.interfaces.FabInterface;
+import com.example.noteplus.ui.all_notes.AllNotesFragment;
+import com.example.noteplus.ui.main.MainFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AllTodoFragment extends Fragment implements FabInterface {
@@ -33,7 +35,10 @@ public class AllTodoFragment extends Fragment implements FabInterface {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((MainActivity) requireActivity()).setListener(this);
+        MainFragment mainFragment = ((MainFragment) AllTodoFragment.this.getParentFragment());
+        if (mainFragment != null) {
+            mainFragment.setListener(this);
+        }
     }
 
     @Override

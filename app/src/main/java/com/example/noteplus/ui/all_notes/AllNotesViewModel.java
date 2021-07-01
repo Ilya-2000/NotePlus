@@ -43,7 +43,6 @@ public class AllNotesViewModel extends AndroidViewModel {
                 .subscribe(new Consumer<List<Note>>() {
                     @Override
                     public void accept(List<Note> notes) throws Exception {
-                        Log.d(TAG, String.valueOf(notes.get(0).getId()));
                         noteListLiveData.setValue(notes);
                     }
                 });
@@ -64,7 +63,11 @@ public class AllNotesViewModel extends AndroidViewModel {
     }
 
     public void deleteNote(Note note) {
-        noteDao.deleteNote(note);
+
+        noteDao.deleteNote(note)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
     }
 
     public void createNote(String title, String body) {

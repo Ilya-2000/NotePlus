@@ -73,7 +73,10 @@ public class NoteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (note != null) {
+                    binding.contentNoteLayout.setVisibility(View.GONE);
+                    binding.loadNoteProgress.setVisibility(View.VISIBLE);
                     mViewModel.deleteNote(note);
+
                 } else {
                     //transfer back
                 }

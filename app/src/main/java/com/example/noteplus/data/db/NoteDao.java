@@ -26,7 +26,7 @@ public interface NoteDao {
     Completable addNote(Note note);
 
     @Delete
-    void deleteNote(Note note);
+    Completable deleteNote(Note note);
 
     @Update
     Completable updateNote(Note note);
