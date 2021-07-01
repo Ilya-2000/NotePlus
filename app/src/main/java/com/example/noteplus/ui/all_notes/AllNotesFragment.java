@@ -39,6 +39,12 @@ public class AllNotesFragment extends Fragment implements FabInterface {
     private MainActivity mainActivity;
     private AllNotesViewModel allNotesViewModel;
     private RecyclerView recyclerView;
+    MainFragment mainFragment;
+
+    public AllNotesFragment() {
+        mainFragment = ((MainFragment)AllNotesFragment.this.getParentFragment());
+        mainFragment.setListener(this);
+    }
 
     @Override
     public void onStart() {
@@ -49,7 +55,7 @@ public class AllNotesFragment extends Fragment implements FabInterface {
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainFragment mainFragment = ((MainFragment)AllNotesFragment.this.getParentFragment());
+
 
 
 
