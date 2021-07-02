@@ -76,9 +76,10 @@ public class NoteFragment extends Fragment {
                     binding.contentNoteLayout.setVisibility(View.GONE);
                     binding.loadNoteProgress.setVisibility(View.VISIBLE);
                     mViewModel.deleteNote(note);
+                    requireActivity().onBackPressed();
 
                 } else {
-                    //transfer back
+                    requireActivity().onBackPressed();
                 }
             }
         });
@@ -92,5 +93,6 @@ public class NoteFragment extends Fragment {
 
 
     }
+
 
 }
