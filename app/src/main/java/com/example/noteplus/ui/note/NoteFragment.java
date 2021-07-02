@@ -62,8 +62,10 @@ public class NoteFragment extends Fragment {
                     note.setHeader(binding.titleNoteText.getText().toString());
                     note.setBody(binding.bodyNoteText.getText().toString());
                     mViewModel.updateNote(note);
+                    requireActivity().onBackPressed();
                 } else  {
                     mViewModel.createNote(binding.titleNoteText.getText().toString(), binding.bodyNoteText.getText().toString());
+                    requireActivity().onBackPressed();
                 }
 
             }
