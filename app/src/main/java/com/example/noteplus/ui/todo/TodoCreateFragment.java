@@ -13,10 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.noteplus.R;
+import com.example.noteplus.databinding.TodoCreateFragmentBinding;
+import com.example.noteplus.models.Note;
+import com.example.noteplus.models.Todo;
+import com.example.noteplus.ui.all_todo.AllTodoFragment;
+import com.example.noteplus.ui.all_todo.AllTodoViewModel;
+
+import org.jetbrains.annotations.NotNull;
 
 public class TodoCreateFragment extends Fragment {
 
-    private TodoCreateViewModel mViewModel;
+    private AllTodoViewModel mViewModel;
+    private TodoCreateFragmentBinding binding;
+    private Todo todo;
 
     public static TodoCreateFragment newInstance() {
         return new TodoCreateFragment();
@@ -25,14 +34,41 @@ public class TodoCreateFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.todo_create_fragment, container, false);
+        binding = TodoCreateFragmentBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Bundle bundle = getArguments();
+        if (bundle != null && (Todo) bundle.getSerializable("todo") != null) {
+            todo = (Todo) bundle.getSerializable("todo");
+            binding.titleTodoText.setText(todo.getHeader());
+        }
+
+        binding.createTodoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mViewModel.createTodo();
+                requireActivity().onBackPressed();
+            }
+        });
+
+        binding.deleteTodoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requireActivity().onBackPressed();
+            }
+        });
+
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(TodoCreateViewModel.class);
-        // TODO: Use the ViewModel
+        mViewModel = new ViewModelProvider(this).get(AllTodoViewModel.class);
+
     }
 
 }

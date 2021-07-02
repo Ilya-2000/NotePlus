@@ -1,13 +1,14 @@
 package com.example.noteplus.models;
 
-import androidx.room.Dao;
-import androidx.room.PrimaryKey;
+import androidx.room.Entity;
 
-@Dao
-class Folder {
-    @PrimaryKey
+import java.io.Serializable;
+
+@Entity
+public class Check {
     private int id;
     private String name;
+    private boolean isChecked;
 
     public int getId() {
         return id;
@@ -23,5 +24,13 @@ class Folder {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 }
