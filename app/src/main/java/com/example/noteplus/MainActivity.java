@@ -3,7 +3,6 @@ package com.example.noteplus;
 import android.os.Bundle;
 
 import com.example.noteplus.adapters.MainViewPagerAdapter;
-import com.example.noteplus.interfaces.FabInterface;
 import com.example.noteplus.ui.all_notes.AllNotesFragment;
 import com.example.noteplus.ui.main.MainFragment;
 import com.google.android.material.snackbar.Snackbar;

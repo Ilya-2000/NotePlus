@@ -13,6 +13,8 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -21,7 +23,6 @@ import com.example.noteplus.MainActivity;
 import com.example.noteplus.R;
 import com.example.noteplus.adapters.NotesRvAdapter;
 import com.example.noteplus.databinding.FragmentAllNotesBinding;
-import com.example.noteplus.interfaces.FabInterface;
 import com.example.noteplus.models.Note;
 import com.example.noteplus.ui.main.MainFragment;
 import com.example.noteplus.ui.note.NoteFragment;
@@ -32,25 +33,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class AllNotesFragment extends Fragment implements FabInterface {
+public class AllNotesFragment extends Fragment {
 
     private FragmentAllNotesBinding binding;
-    private FloatingActionButton fab;
     private MainActivity mainActivity;
     private AllNotesViewModel allNotesViewModel;
     private RecyclerView recyclerView;
-    MainFragment mainFragment;
+    private NavController navController;
 
-    public AllNotesFragment() {
-        mainFragment = ((MainFragment)AllNotesFragment.this.getParentFragment());
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        testMethod();
-    }
 
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -60,11 +50,6 @@ public class AllNotesFragment extends Fragment implements FabInterface {
 
 
 
-    }
-    public void testMethod(){
-        if (isDetached() && getParentFragment() != null) {
-            return;
-        }
     }
 
 
@@ -76,7 +61,7 @@ public class AllNotesFragment extends Fragment implements FabInterface {
             Bundle savedInstanceState
     ) {
         binding = FragmentAllNotesBinding.inflate(inflater, container, false);
-        fab = requireActivity().findViewById(R.id.fab);
+        navController = Navigation.findNavController(requireActivity(), R.id.fragment_container);
         recyclerView = binding.allNotesRv;
         recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         return binding.getRoot();
@@ -109,19 +94,19 @@ public class AllNotesFragment extends Fragment implements FabInterface {
                             fragInstance.setArguments(bundle);
                             getFragmentManager().beginTransaction()
                                     .add(R.id.fragment_container, fragInstance)
+                                    .addToBackStack(null)
                                     .commit();
                         }
-
-                        FragmentContainerView fragmentContainerView = requireActivity().findViewById(R.id.fragment_container);
-                        ViewPager2 viewPager2 = requireActivity().findViewById(R.id.main_vp);
-                        TabLayout tabLayout = requireActivity().findViewById(R.id.main_tab);
-                        fragmentContainerView.setVisibility(View.VISIBLE);
-                        fab.setVisibility(View.GONE);
-                        viewPager2.setVisibility(View.GONE);
-                        tabLayout.setVisibility(View.GONE);
                     }
                 });
                 recyclerView.setAdapter(adapter);
+            }
+        });
+
+        binding.fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                noteCreate();
             }
         });
 
@@ -134,22 +119,16 @@ public class AllNotesFragment extends Fragment implements FabInterface {
         binding = null;
     }
 
-    @Override
     public void noteCreate() {
         FragmentContainerView fragmentContainerView = requireActivity().findViewById(R.id.fragment_container);
-        ViewPager2 viewPager2 = requireActivity().findViewById(R.id.main_vp);
-        TabLayout tabLayout = requireActivity().findViewById(R.id.main_tab);
         fragmentContainerView.setVisibility(View.VISIBLE);
         NoteFragment noteFragment = new NoteFragment();
-        getFragmentManager().beginTransaction().replace(R.id.fragment_container, noteFragment).commit();
-        fab.setVisibility(View.GONE);
-        viewPager2.setVisibility(View.GONE);
-        tabLayout.setVisibility(View.GONE);
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment_container, noteFragment)
+                .addToBackStack(null)
+                .commit();
 
-    }
 
-    @Override
-    public void todoCreate() {
-        //do nothing
     }
 }

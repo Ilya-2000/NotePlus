@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.noteplus.ui.main.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_noteFragment"
+            app:destination="@id/noteFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_todoCreateFragment"
+            app:destination="@id/todoCreateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/todoCreateFragment"
+        android:name="com.example.noteplus.ui.todo.TodoCreateFragment"
+        android:label="todo_create_fragment"
+        tools:layout="@layout/todo_create_fragment" />
+    <fragment
+        android:id="@+id/noteFragment"
+        android:name="com.example.noteplus.ui.note.NoteFragment"
+        android:label="NoteFragment" />
+    <fragment
+        android:id="@+id/allNotesFragment"
+        android:name="com.example.noteplus.ui.all_notes.AllNotesFragment"
+        android:label="fragment_all_notes"
+        tools:layout="@layout/fragment_all_notes" >
+        <action
+            android:id="@+id/action_allNotesFragment_to_noteFragment"
+            app:destination="@id/noteFragment" />
+    </fragment>
+</navigation>
