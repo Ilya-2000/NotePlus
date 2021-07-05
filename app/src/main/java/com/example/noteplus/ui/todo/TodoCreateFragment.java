@@ -62,6 +62,13 @@ public class TodoCreateFragment extends Fragment {
             }
         });
 
+        binding.addCheckFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     @Override
