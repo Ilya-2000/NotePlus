@@ -9,21 +9,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.noteplus.MainActivity;
 import com.example.noteplus.R;
 import com.example.noteplus.databinding.FragmentAllTodoBinding;
+import com.example.noteplus.models.Todo;
 import com.example.noteplus.ui.all_notes.AllNotesFragment;
+import com.example.noteplus.ui.all_notes.AllNotesViewModel;
 import com.example.noteplus.ui.main.MainFragment;
 import com.example.noteplus.ui.note.NoteFragment;
 import com.example.noteplus.ui.todo.TodoCreateFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 public class AllTodoFragment extends Fragment {
 
     private FragmentAllTodoBinding binding;
+    private AllTodoViewModel viewModel;
 
 
     @Override
@@ -46,11 +53,19 @@ public class AllTodoFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(AllTodoViewModel.class);
 
         binding.fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 todoCreate();
+            }
+        });
+
+        viewModel.getTodoListLiveData().observe(getViewLifecycleOwner(), new Observer<List<Todo>>() {
+            @Override
+            public void onChanged(List<Todo> todoList) {
+
             }
         });
     }

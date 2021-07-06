@@ -73,5 +73,9 @@ public class AllTodoViewModel extends AndroidViewModel {
         checkListMutableLiveData.setValue(checkList);
     }
 
+    public LiveData<List<Todo>> getTodoListLiveData() {
+        return todoListMutableLiveData;
+    }
+
 
 }
