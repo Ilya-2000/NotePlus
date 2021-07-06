@@ -5,6 +5,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
@@ -19,6 +20,7 @@ import com.example.noteplus.models.Todo;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Objects;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -39,14 +41,36 @@ public class AllTodoViewModel extends AndroidViewModel {
         todoDao = todoRoomDb.todoDao();
         todoDao.getAllTodo()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(todoList -> todoListMutableLiveData.setValue(todoList));
+                .subscribe(new Consumer<List<Todo>>() {
+                    @Override
+                    public void accept(List<Todo> todoList) throws Exception {
+                        todoListMutableLiveData.setValue(todoList);
+                    }
+                });
+    }
+
+    void setTodo(int index) {
+        todoMutableLiveData.setValue(Objects.requireNonNull(todoListMutableLiveData.getValue()).get(index));
     }
 
     public void createTodo() {
 
     }
-    void createCheck(Check check) {
+    public void setCheckListMutableLiveData(List<Check> checkList) {
+        checkListMutableLiveData.setValue(checkList);
+    }
 
+    public void setCheckMutableLiveData(Check check) {
+        checkMutableLiveData.setValue(check);
+        addCheckToList();
+    }
+
+    void addCheckToList() {
+        List<Check> checkList = checkListMutableLiveData.getValue();
+        if (checkList != null) {
+            checkList.add(checkMutableLiveData.getValue());
+        }
+        checkListMutableLiveData.setValue(checkList);
     }
 
 

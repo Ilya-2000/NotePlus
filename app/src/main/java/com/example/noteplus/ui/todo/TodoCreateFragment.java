@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.noteplus.R;
 import com.example.noteplus.databinding.TodoCreateFragmentBinding;
+import com.example.noteplus.models.Check;
 import com.example.noteplus.models.Note;
 import com.example.noteplus.models.Todo;
 import com.example.noteplus.ui.all_todo.AllTodoFragment;
@@ -65,17 +66,42 @@ public class TodoCreateFragment extends Fragment {
         binding.addCheckFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                binding.checkCreateLayout.setVisibility(View.VISIBLE);
+                binding.createTodoMainLayout.setVisibility(View.GONE);
 
             }
         });
 
+        binding.saveCreateCheckBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createCheck();
+            }
+        });
+
+        binding.cancelCreateCheckBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requireActivity().onBackPressed();
+            }
+        });
+
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(AllTodoViewModel.class);
 
+    }
+
+    public void createCheck() {
+        Check check = new Check();
+        check.setName(binding.checkNameEditText.getText().toString());
+        check.setChecked(false);
+        mViewModel.setCheckMutableLiveData(check);
+        requireActivity().onBackPressed();
     }
 
 }

@@ -1,11 +1,13 @@
 package com.example.noteplus.models;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
 @Entity
 public class Check {
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
     private boolean isChecked;
