@@ -46,20 +46,24 @@ public class TodoCreateFragment extends Fragment {
         if (bundle != null && (Todo) bundle.getSerializable("todo") != null) {
             todo = (Todo) bundle.getSerializable("todo");
             binding.titleTodoText.setText(todo.getHeader());
+
         }
 
         binding.createTodoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createTodo();
-                //requireActivity().onBackPressed();
             }
         });
 
         binding.deleteTodoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (todo != null) {
+                    mViewModel.deleteTodo(todo);
+                }
                 requireActivity().onBackPressed();
+
             }
         });
 
@@ -109,11 +113,10 @@ public class TodoCreateFragment extends Fragment {
         if (todo != null) {
             todo.setHeader(binding.titleTodoText.getText().toString());
             mViewModel.updateTodo(todo);
-            requireActivity().onBackPressed();
         } else {
             mViewModel.createTodo(binding.titleTodoText.getText().toString());
-            requireActivity().onBackPressed();
         }
+        requireActivity().onBackPressed();
     }
 
 }

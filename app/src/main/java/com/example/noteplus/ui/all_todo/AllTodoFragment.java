@@ -75,6 +75,7 @@ public class AllTodoFragment extends Fragment {
                     @Override
                     public void onItemClick(Todo todo) {
                         if (savedInstanceState == null) {
+                            viewModel.setTodoMutableLiveData(todo);
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("todo", todo);
                             Fragment fragInstance;

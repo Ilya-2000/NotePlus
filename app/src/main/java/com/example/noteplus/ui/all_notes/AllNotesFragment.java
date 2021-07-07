@@ -39,7 +39,6 @@ public class AllNotesFragment extends Fragment {
     private MainActivity mainActivity;
     private AllNotesViewModel allNotesViewModel;
     private RecyclerView recyclerView;
-    private NavController navController;
 
 
     @Override
@@ -61,7 +60,7 @@ public class AllNotesFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         binding = FragmentAllNotesBinding.inflate(inflater, container, false);
-        navController = Navigation.findNavController(requireActivity(), R.id.fragment_container);
+//        navController = Navigation.findNavController(requireActivity(), R.id.fragment_container);
         recyclerView = binding.allNotesRv;
         recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         return binding.getRoot();

@@ -24,6 +24,7 @@ import java.util.Objects;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class AllTodoViewModel extends AndroidViewModel {
     private final SavedStateHandle state;
@@ -47,6 +48,7 @@ public class AllTodoViewModel extends AndroidViewModel {
                         todoListMutableLiveData.setValue(todoList);
                     }
                 });
+        todoMutableLiveData = state.getLiveData("Default");
     }
 
     void setTodo(int index) {
@@ -54,7 +56,10 @@ public class AllTodoViewModel extends AndroidViewModel {
     }
 
     public void createTodo(String name) {
-        todoDao.addTodo(new Todo(name, checkListMutableLiveData.getValue()));
+        todoDao.addTodo(new Todo(name, checkListMutableLiveData.getValue()))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
     }
     public void setCheckListMutableLiveData(List<Check> checkList) {
         checkListMutableLiveData.setValue(checkList);
@@ -75,12 +80,27 @@ public class AllTodoViewModel extends AndroidViewModel {
 
     public void updateTodo(Todo todo) {
         todo.setCheckList(checkListMutableLiveData.getValue());
-        todoDao.updateTodo(todo);
+        todoDao.updateTodo(todo)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
     }
 
     public LiveData<List<Todo>> getTodoListLiveData() {
         return todoListMutableLiveData;
     }
+
+    public void setTodoMutableLiveData(Todo todo) {
+        todoMutableLiveData.setValue(todo);
+    }
+
+    public void deleteTodo(Todo todo) {
+        todoDao.deleteTodo(todo)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
+    }
+
 
 
 }
