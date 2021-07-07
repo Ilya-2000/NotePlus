@@ -51,8 +51,8 @@ public class TodoCreateFragment extends Fragment {
         binding.createTodoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mViewModel.createTodo();
-                requireActivity().onBackPressed();
+                createTodo();
+                //requireActivity().onBackPressed();
             }
         });
 
@@ -101,7 +101,19 @@ public class TodoCreateFragment extends Fragment {
         check.setName(binding.checkNameEditText.getText().toString());
         check.setChecked(false);
         mViewModel.setCheckMutableLiveData(check);
-        requireActivity().onBackPressed();
+        binding.checkCreateLayout.setVisibility(View.GONE);
+        binding.createTodoMainLayout.setVisibility(View.VISIBLE);
+    }
+
+    public void createTodo() {
+        if (todo != null) {
+            todo.setHeader(binding.titleTodoText.getText().toString());
+            mViewModel.updateTodo(todo);
+            requireActivity().onBackPressed();
+        } else {
+            mViewModel.createTodo(binding.titleTodoText.getText().toString());
+            requireActivity().onBackPressed();
+        }
     }
 
 }

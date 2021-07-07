@@ -13,9 +13,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.noteplus.MainActivity;
 import com.example.noteplus.R;
+import com.example.noteplus.adapters.TodoRvAdapter;
 import com.example.noteplus.databinding.FragmentAllTodoBinding;
 import com.example.noteplus.models.Todo;
 import com.example.noteplus.ui.all_notes.AllNotesFragment;
@@ -31,6 +34,8 @@ public class AllTodoFragment extends Fragment {
 
     private FragmentAllTodoBinding binding;
     private AllTodoViewModel viewModel;
+    private TodoRvAdapter adapter;
+    private RecyclerView recyclerView;
 
 
     @Override
@@ -39,7 +44,8 @@ public class AllTodoFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         binding = FragmentAllTodoBinding.inflate(inflater, container, false);
-
+        recyclerView = binding.todoRv;
+        recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
 
         return binding.getRoot();
 
@@ -65,7 +71,23 @@ public class AllTodoFragment extends Fragment {
         viewModel.getTodoListLiveData().observe(getViewLifecycleOwner(), new Observer<List<Todo>>() {
             @Override
             public void onChanged(List<Todo> todoList) {
-
+                adapter = new TodoRvAdapter(requireContext(), todoList, new TodoRvAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(Todo todo) {
+                        if (savedInstanceState == null) {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("todo", todo);
+                            Fragment fragInstance;
+                            fragInstance = TodoCreateFragment.newInstance();
+                            fragInstance.setArguments(bundle);
+                            getFragmentManager().beginTransaction()
+                                    .add(R.id.fragment_container, fragInstance)
+                                    .addToBackStack(null)
+                                    .commit();
+                        }
+                    }
+                });
+                recyclerView.setAdapter(adapter);
             }
         });
     }

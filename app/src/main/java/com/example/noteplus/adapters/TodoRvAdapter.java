@@ -1,5 +1,6 @@
 package com.example.noteplus.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,8 @@ public class TodoRvAdapter extends RecyclerView.Adapter<TodoRvAdapter.ViewHolder
     private List<Todo> todoList;
     private final TodoRvAdapter.OnItemClickListener listener;
 
-    public TodoRvAdapter(LayoutInflater inflater, List<Todo> todoList, TodoRvAdapter.OnItemClickListener listener) {
-        this.inflater = inflater;
+    public TodoRvAdapter(Context context, List<Todo> todoList, TodoRvAdapter.OnItemClickListener listener) {
+        this.inflater = LayoutInflater.from(context);
         this.todoList = todoList;
         this.listener = listener;
     }

@@ -4,14 +4,20 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Todo {
+public class Todo implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String header;
     private List<Check> checkList;
+
+    public Todo(String header, List<Check> checkList) {
+        this.header = header;
+        this.checkList = checkList;
+    }
 
     public int getId() {
         return id;

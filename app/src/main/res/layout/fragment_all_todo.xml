@@ -13,7 +13,7 @@
         tools:context=".ui.all_todo.AllTodoFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/folder_rv"
+            android:id="@+id/todo_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

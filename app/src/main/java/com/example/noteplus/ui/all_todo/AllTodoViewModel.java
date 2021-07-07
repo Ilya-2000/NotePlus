@@ -53,8 +53,8 @@ public class AllTodoViewModel extends AndroidViewModel {
         todoMutableLiveData.setValue(Objects.requireNonNull(todoListMutableLiveData.getValue()).get(index));
     }
 
-    public void createTodo() {
-
+    public void createTodo(String name) {
+        todoDao.addTodo(new Todo(name, checkListMutableLiveData.getValue()));
     }
     public void setCheckListMutableLiveData(List<Check> checkList) {
         checkListMutableLiveData.setValue(checkList);
@@ -71,6 +71,11 @@ public class AllTodoViewModel extends AndroidViewModel {
             checkList.add(checkMutableLiveData.getValue());
         }
         checkListMutableLiveData.setValue(checkList);
+    }
+
+    public void updateTodo(Todo todo) {
+        todo.setCheckList(checkListMutableLiveData.getValue());
+        todoDao.updateTodo(todo);
     }
 
     public LiveData<List<Todo>> getTodoListLiveData() {
