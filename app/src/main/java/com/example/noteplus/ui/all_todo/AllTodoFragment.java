@@ -20,6 +20,7 @@ import com.example.noteplus.MainActivity;
 import com.example.noteplus.R;
 import com.example.noteplus.adapters.TodoRvAdapter;
 import com.example.noteplus.databinding.FragmentAllTodoBinding;
+import com.example.noteplus.models.Check;
 import com.example.noteplus.models.Todo;
 import com.example.noteplus.ui.all_notes.AllNotesFragment;
 import com.example.noteplus.ui.all_notes.AllNotesViewModel;

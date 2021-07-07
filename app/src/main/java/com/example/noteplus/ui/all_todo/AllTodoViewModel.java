@@ -19,6 +19,7 @@ import com.example.noteplus.models.Todo;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -55,27 +56,15 @@ public class AllTodoViewModel extends AndroidViewModel {
         todoMutableLiveData.setValue(Objects.requireNonNull(todoListMutableLiveData.getValue()).get(index));
     }
 
+    public LiveData<List<Check>> getCheckListLiveData() {
+        return checkListMutableLiveData;
+    }
+
     public void createTodo(String name) {
         todoDao.addTodo(new Todo(name, checkListMutableLiveData.getValue()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();
-    }
-    public void setCheckListMutableLiveData(List<Check> checkList) {
-        checkListMutableLiveData.setValue(checkList);
-    }
-
-    public void setCheckMutableLiveData(Check check) {
-        checkMutableLiveData.setValue(check);
-        addCheckToList();
-    }
-
-    void addCheckToList() {
-        List<Check> checkList = checkListMutableLiveData.getValue();
-        if (checkList != null) {
-            checkList.add(checkMutableLiveData.getValue());
-        }
-        checkListMutableLiveData.setValue(checkList);
     }
 
     public void updateTodo(Todo todo) {
@@ -90,9 +79,26 @@ public class AllTodoViewModel extends AndroidViewModel {
         return todoListMutableLiveData;
     }
 
+
     public void setTodoMutableLiveData(Todo todo) {
         todoMutableLiveData.setValue(todo);
     }
+
+    public void setToCheckListMutableLiveData(Check check) {
+        List<Check> checkList = checkListMutableLiveData.getValue();
+        if (checkList != null) {
+            checkList.add(check);
+            checkListMutableLiveData.setValue(checkList);
+        } else {
+            List<Check> checks = new ArrayList<Check>();
+            checks.add(check);
+            checkListMutableLiveData.setValue(checks);
+
+        }
+        ;
+    }
+
+
 
     public void deleteTodo(Todo todo) {
         todoDao.deleteTodo(todo)
