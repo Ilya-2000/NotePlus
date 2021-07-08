@@ -22,8 +22,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-   <!-- <include layout="@layout/content_main" /> -->
-
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"

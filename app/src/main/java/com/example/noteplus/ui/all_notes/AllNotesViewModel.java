@@ -53,9 +53,6 @@ public class AllNotesViewModel extends AndroidViewModel {
         noteMutableLiveData.setValue(note);
     }
 
-    public LiveData<Note> getNoteLiveData() {
-        return noteMutableLiveData;
-    }
 
 
     public LiveData<List<Note>> getNoteListLiveData() {

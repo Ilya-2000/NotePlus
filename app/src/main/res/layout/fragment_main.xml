@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/Theme.NotePlus.AppBarOverlay">
-
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/main_tab"
                 android:layout_width="match_parent"
@@ -25,7 +24,6 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <!-- <include layout="@layout/content_main" /> -->
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/main_vp"
             android:layout_width="match_parent"

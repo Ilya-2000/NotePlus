@@ -47,6 +47,7 @@ public class AllTodoViewModel extends AndroidViewModel {
                     @Override
                     public void accept(List<Todo> todoList) throws Exception {
                         todoListMutableLiveData.setValue(todoList);
+
                     }
                 });
         todoMutableLiveData = state.getLiveData("Default");
@@ -84,7 +85,7 @@ public class AllTodoViewModel extends AndroidViewModel {
         todoMutableLiveData.setValue(todo);
     }
 
-    public void setToCheckListMutableLiveData(Check check) {
+    public void addToCheckListMutableLiveData(Check check) {
         List<Check> checkList = checkListMutableLiveData.getValue();
         if (checkList != null) {
             checkList.add(check);
@@ -98,6 +99,10 @@ public class AllTodoViewModel extends AndroidViewModel {
         ;
     }
 
+    public void setCurrentCheckListMutableLiveData(List<Check> checkList) {
+        checkListMutableLiveData.setValue(checkList);
+    }
+
 
 
     public void deleteTodo(Todo todo) {
@@ -106,6 +111,16 @@ public class AllTodoViewModel extends AndroidViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();
     }
+
+    public void setCheckBox(Check check, int position) {
+        List<Check> checkList = checkListMutableLiveData.getValue();
+        if (checkList != null) {
+            checkList.remove(position);
+            checkList.add(position, check);
+            checkListMutableLiveData.setValue(checkList);
+        }
+    }
+
 
 
 

@@ -21,10 +21,6 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainFragment extends Fragment {
 
-    private MainFragmentBinding binding;
-    private MainViewPagerAdapter mainViewPagerAdapter;
-    private TabLayout tabLayout;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,14 +31,15 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = MainFragmentBinding.inflate(inflater, container, false);
+        MainFragmentBinding binding = MainFragmentBinding.inflate(inflater, container, false);
         ViewPager2 viewPager2 = binding.mainVp;
         viewPager2.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
-        mainViewPagerAdapter = new MainViewPagerAdapter(this.getFragmentManager(), getLifecycle());
+        MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(this.getFragmentManager(), getLifecycle());
         viewPager2.setAdapter(mainViewPagerAdapter);
-        tabLayout = binding.mainTab;
+        TabLayout tabLayout = binding.mainTab;
         tabLayout.setBackgroundColor(getResources().getColor(R.color.brutal_blue));
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.yellow));
+        tabLayout.setTabTextColors(getResources().getColor(R.color.text_color), getResources().getColor(R.color.yellow));
 
         new TabLayoutMediator(tabLayout, viewPager2, ((tab, position) -> {
             if (position == 0) {
@@ -53,4 +50,5 @@ public class MainFragment extends Fragment {
         })).attach();
         return binding.getRoot();
     }
+
 }

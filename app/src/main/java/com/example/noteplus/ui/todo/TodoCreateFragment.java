@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -50,6 +52,7 @@ public class TodoCreateFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = binding.todoCheckRv;
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         Bundle bundle = getArguments();
         if (bundle != null && (Todo) bundle.getSerializable("todo") != null) {
             todo = (Todo) bundle.getSerializable("todo");
@@ -79,7 +82,7 @@ public class TodoCreateFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 binding.checkCreateLayout.setVisibility(View.VISIBLE);
-                //binding.createTodoMainLayout.setVisibility(View.GONE);
+                binding.checkNameEditText.setText("");
 
             }
         });
@@ -94,9 +97,10 @@ public class TodoCreateFragment extends Fragment {
         binding.cancelCreateCheckBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().onBackPressed();
+                binding.checkCreateLayout.setVisibility(View.GONE);
             }
         });
+
 
     }
 
@@ -105,14 +109,25 @@ public class TodoCreateFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(AllTodoViewModel.class);
+        if (todo != null) {
+            mViewModel.setCurrentCheckListMutableLiveData(todo.getCheckList());
+        }
         mViewModel.getCheckListLiveData().observe(getViewLifecycleOwner(), new Observer<List<Check>>() {
             @Override
             public void onChanged(List<Check> checks) {
                 adapter = new CheckRvAdapter(requireContext(), checks, new CheckRvAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(Check check) {
-
+                        checks.remove(check);
                     }
+
+                    @Override
+                    public void onItemChecked(Check check, int position, boolean isChecked) {
+
+                        todo.getCheckList().get(position).setChecked(isChecked);
+                    }
+
+
                 });
                 recyclerView.setAdapter(adapter);
             }
@@ -124,7 +139,7 @@ public class TodoCreateFragment extends Fragment {
         Check check = new Check();
         check.setName(binding.checkNameEditText.getText().toString());
         check.setChecked(false);
-        mViewModel.setToCheckListMutableLiveData(check);
+        mViewModel.addToCheckListMutableLiveData(check);
         binding.checkCreateLayout.setVisibility(View.GONE);
         binding.createTodoMainLayout.setVisibility(View.VISIBLE);
     }

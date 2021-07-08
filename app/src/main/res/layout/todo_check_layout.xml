@@ -10,12 +10,15 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/dark_blue" />
+            android:background="@color/dark_blue">
 
         <CheckBox
             android:id="@+id/todo_check"
@@ -32,7 +35,9 @@
             android:background="@color/dark_blue"
             android:layout_gravity="center_horizontal|end"
             android:layout_marginEnd="8dp"
+            android:layout_marginTop="12dp"
             android:src="@drawable/ic_baseline_delete_24" />
+        </FrameLayout>
 
     </androidx.cardview.widget.CardView>
 </layout>
