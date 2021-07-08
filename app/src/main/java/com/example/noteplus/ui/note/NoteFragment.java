@@ -23,7 +23,7 @@ import com.example.noteplus.models.Note;
 import com.example.noteplus.ui.all_notes.AllNotesViewModel;
 
 import org.jetbrains.annotations.NotNull;
-
+//Класс Note фрагмента
 public class NoteFragment extends Fragment {
 
     private AllNotesViewModel mViewModel;
@@ -47,13 +47,14 @@ public class NoteFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mViewModel = new ViewModelProvider(this).get(AllNotesViewModel.class);
+        //Получение данных элемента с экрана со списком элементов
         Bundle bundle = getArguments();
         if (bundle != null && (Note) bundle.getSerializable("note") != null) {
             note = (Note) bundle.getSerializable("note");
             binding.titleNoteText.setText(note.getHeader());
             binding.bodyNoteText.setText(note.getBody());
         }
-
+        //Создание Note
         binding.createNoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +71,7 @@ public class NoteFragment extends Fragment {
 
             }
         });
-
+        //Удаление Note
         binding.deleteNoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

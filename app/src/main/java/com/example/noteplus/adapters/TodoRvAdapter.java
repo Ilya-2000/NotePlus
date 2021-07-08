@@ -15,7 +15,7 @@ import com.example.noteplus.models.Todo;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-
+//Адаптер списка To do
 public class TodoRvAdapter extends RecyclerView.Adapter<TodoRvAdapter.ViewHolder>{
     public interface OnItemClickListener {
         void onItemClick(Todo todo);

@@ -18,7 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-
+//Класс главного фрагмента
 public class MainFragment extends Fragment {
 
 
@@ -32,6 +32,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         MainFragmentBinding binding = MainFragmentBinding.inflate(inflater, container, false);
+        //Реализация TabLayout и ViewPager
         ViewPager2 viewPager2 = binding.mainVp;
         viewPager2.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(this.getFragmentManager(), getLifecycle());

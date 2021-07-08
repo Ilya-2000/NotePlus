@@ -32,7 +32,7 @@ import com.google.android.material.tabs.TabLayout;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-
+//Класс фрагмента со списком Note
 public class AllNotesFragment extends Fragment {
 
     private FragmentAllNotesBinding binding;
@@ -43,16 +43,7 @@ public class AllNotesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
-
     }
-
-
-
-
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -76,6 +67,7 @@ public class AllNotesFragment extends Fragment {
     public void onActivityCreated(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         allNotesViewModel = new ViewModelProvider(this).get(AllNotesViewModel.class);
+        //Переход на элемент Note
         allNotesViewModel.getNoteListLiveData().observe(getViewLifecycleOwner(), new Observer<List<Note>>() {
             @Override
             public void onChanged(List<Note> notes) {
@@ -99,7 +91,7 @@ public class AllNotesFragment extends Fragment {
                 recyclerView.setAdapter(adapter);
             }
         });
-
+        //Переход на создание элемента Note
         binding.fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +107,7 @@ public class AllNotesFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
+    //Переход на экран создания Note
     public void noteCreate() {
         FragmentContainerView fragmentContainerView = requireActivity().findViewById(R.id.fragment_container);
         fragmentContainerView.setVisibility(View.VISIBLE);

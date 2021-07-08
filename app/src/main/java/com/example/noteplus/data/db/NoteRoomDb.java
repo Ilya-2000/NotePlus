@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.noteplus.models.Note;
-
+//Класс базы данных
 @Database(entities = Note.class, version = 1, exportSchema = false)
 public abstract class NoteRoomDb extends RoomDatabase {
     private static NoteRoomDb mInstance;

@@ -24,7 +24,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-
+//ViewModel для Note части
 public class AllNotesViewModel extends AndroidViewModel {
     private final String TAG = "AllNotesViewModel";
     private final SavedStateHandle state;
@@ -36,6 +36,7 @@ public class AllNotesViewModel extends AndroidViewModel {
     public AllNotesViewModel(@NonNull @NotNull Application application, SavedStateHandle state) {
         super(application);
         this.state = state;
+        //Реализация БД и получение всеъ элементов Note с использованием RxJava2
         NoteRoomDb noteDb = NoteRoomDb.getDatabase(application);
         noteDao = noteDb.noteDao();
         noteDao.getAllNotes()
@@ -58,22 +59,21 @@ public class AllNotesViewModel extends AndroidViewModel {
     public LiveData<List<Note>> getNoteListLiveData() {
         return noteListLiveData;
     }
-
+    //Удаление элемента
     public void deleteNote(Note note) {
-
         noteDao.deleteNote(note)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();
     }
-
+    //Создание элемента
     public void createNote(String title, String body) {
         noteDao.addNote(new Note(title, body))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();
     }
-
+    //Обновление элемента
     public void updateNote(Note note) {
         noteDao.updateNote(note)
                 .subscribeOn(Schedulers.io())

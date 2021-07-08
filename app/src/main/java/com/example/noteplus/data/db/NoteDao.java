@@ -16,18 +16,19 @@ import io.reactivex.Flowable;
 import io.reactivex.Observable;
 
 import static androidx.room.OnConflictStrategy.REPLACE;
-
+//Интерфейс БД Note
 @Dao
 public interface NoteDao {
+    //Получение списка Note
     @Query("SELECT * from Note")
     Flowable<List<Note>> getAllNotes();
-
+    //Добавление в список элемента
     @Insert(onConflict = REPLACE)
     Completable addNote(Note note);
-
+    //Удаление элемента из списка
     @Delete
     Completable deleteNote(Note note);
-
+    //Обновление элемента из списка. У существующего элемента будут обновлены данные
     @Update
     Completable updateNote(Note note);
 

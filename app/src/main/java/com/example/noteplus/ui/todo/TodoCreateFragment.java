@@ -28,7 +28,7 @@ import com.example.noteplus.ui.all_todo.AllTodoViewModel;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-
+//Класс фрагмента создания to do
 public class TodoCreateFragment extends Fragment {
 
     private AllTodoViewModel mViewModel;
@@ -53,20 +53,21 @@ public class TodoCreateFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = binding.todoCheckRv;
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        //Получение данных элемента из экрана списка to do
         Bundle bundle = getArguments();
         if (bundle != null && (Todo) bundle.getSerializable("todo") != null) {
             todo = (Todo) bundle.getSerializable("todo");
             binding.titleTodoText.setText(todo.getHeader());
 
         }
-
+        //Создание to do
         binding.createTodoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createTodo();
             }
         });
-
+        //Удаление элемента
         binding.deleteTodoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +78,7 @@ public class TodoCreateFragment extends Fragment {
 
             }
         });
-
+        //Добавление Check элемента
         binding.addCheckFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,14 +87,14 @@ public class TodoCreateFragment extends Fragment {
 
             }
         });
-
+        //Сохранение Check
         binding.saveCreateCheckBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createCheck();
             }
         });
-
+        //Отмена создания Check
         binding.cancelCreateCheckBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +113,7 @@ public class TodoCreateFragment extends Fragment {
         if (todo != null) {
             mViewModel.setCurrentCheckListMutableLiveData(todo.getCheckList());
         }
+        //Получение Check списка, удаление и установка галочки CheckBox
         mViewModel.getCheckListLiveData().observe(getViewLifecycleOwner(), new Observer<List<Check>>() {
             @Override
             public void onChanged(List<Check> checks) {
@@ -134,7 +136,7 @@ public class TodoCreateFragment extends Fragment {
         });
 
     }
-
+    //Создание Check элемента
     public void createCheck() {
         Check check = new Check();
         check.setName(binding.checkNameEditText.getText().toString());
@@ -143,7 +145,7 @@ public class TodoCreateFragment extends Fragment {
         binding.checkCreateLayout.setVisibility(View.GONE);
         binding.createTodoMainLayout.setVisibility(View.VISIBLE);
     }
-
+    //Создание или обновление to do элемента
     public void createTodo() {
         if (todo != null) {
             todo.setHeader(binding.titleTodoText.getText().toString());

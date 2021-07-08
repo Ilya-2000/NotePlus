@@ -9,7 +9,7 @@ import androidx.room.TypeConverters;
 
 import com.example.noteplus.models.CheckConverter;
 import com.example.noteplus.models.Todo;
-
+//Класс базы данных To do
 @Database(entities = Todo.class, version = 1, exportSchema = false)
 @TypeConverters(CheckConverter.class)
 public abstract class TodoRoomDb extends RoomDatabase {

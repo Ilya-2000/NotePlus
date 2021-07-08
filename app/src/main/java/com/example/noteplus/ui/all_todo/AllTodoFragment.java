@@ -30,7 +30,7 @@ import com.example.noteplus.ui.todo.TodoCreateFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
-
+//Класс фрагмента со списком to do
 public class AllTodoFragment extends Fragment {
 
     private FragmentAllTodoBinding binding;
@@ -61,14 +61,14 @@ public class AllTodoFragment extends Fragment {
     public void onActivityCreated(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(AllTodoViewModel.class);
-
+        //Создание to do
         binding.fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 todoCreate();
             }
         });
-
+        //Переход на элемент
         viewModel.getTodoListLiveData().observe(getViewLifecycleOwner(), new Observer<List<Todo>>() {
             @Override
             public void onChanged(List<Todo> todoList) {
@@ -99,7 +99,7 @@ public class AllTodoFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
+    //Переход на экран создания to do
     public void todoCreate() {
         FragmentContainerView fragmentContainerView = requireActivity().findViewById(R.id.fragment_container);
         fragmentContainerView.setVisibility(View.VISIBLE);

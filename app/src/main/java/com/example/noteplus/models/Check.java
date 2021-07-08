@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
-
+//Модель данных Check
 @Entity
 public class Check {
     @PrimaryKey(autoGenerate = true)

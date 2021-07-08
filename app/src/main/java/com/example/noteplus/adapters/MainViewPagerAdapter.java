@@ -9,7 +9,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.noteplus.ui.all_notes.AllNotesFragment;
 import com.example.noteplus.ui.all_todo.AllTodoFragment;
 import com.example.noteplus.ui.main.MainFragment;
-
+//Адаптер главного ViewPager
 public class MainViewPagerAdapter extends FragmentStateAdapter {
 
     public MainViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {

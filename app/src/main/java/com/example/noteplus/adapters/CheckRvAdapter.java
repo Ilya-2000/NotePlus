@@ -19,7 +19,7 @@ import com.example.noteplus.models.Todo;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-
+//Адаптер Check элементов
 public class CheckRvAdapter extends RecyclerView.Adapter<CheckRvAdapter.ViewHolder>{
     public interface OnItemClickListener {
         void onItemClick(Check check);
@@ -61,7 +61,7 @@ public class CheckRvAdapter extends RecyclerView.Adapter<CheckRvAdapter.ViewHold
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         listener.onItemChecked(checkList.get(position), position, b);
-                        
+
 
                     }
                 });

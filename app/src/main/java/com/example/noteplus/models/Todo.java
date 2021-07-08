@@ -8,7 +8,7 @@ import androidx.room.TypeConverters;
 
 import java.io.Serializable;
 import java.util.List;
-
+//Модель данных to do
 @Entity
 public class Todo implements Serializable {
     @PrimaryKey(autoGenerate = true)

@@ -10,7 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//Конвертатор Check списка в JSON для хранения в базе данных
 public class CheckConverter {
 
     private static Gson gson = new Gson();

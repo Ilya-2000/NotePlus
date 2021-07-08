@@ -19,7 +19,7 @@ import com.example.noteplus.ui.note.NoteFragment;
 
 import java.util.List;
 import java.util.Objects;
-
+//Адаптер Note списка
 public class NotesRvAdapter extends RecyclerView.Adapter<NotesRvAdapter.ViewHolder>{
     public interface OnItemClickListener {
         void onItemClick(Note note);

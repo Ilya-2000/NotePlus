@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
-
+//Модель данных Note
 @Entity
 public class Note implements Serializable {
     @PrimaryKey(autoGenerate = true)
