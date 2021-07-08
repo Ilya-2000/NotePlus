@@ -13,7 +13,6 @@ import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.noteplus.databinding.ActivityMainBinding;
